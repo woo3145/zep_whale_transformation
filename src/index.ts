@@ -5,9 +5,9 @@
 import { ScriptPlayer } from 'zep-script';
 
 // 변수에 SpriteSheet를 읽어 저장
-const whale = ScriptApp.loadSpritesheet(
-  'whale_sprite.png',
-  48,
+const whale_2 = ScriptApp.loadSpritesheet(
+  'whale_2.png',
+  64,
   64,
   {
     left: [0], // left 라는 이미 정해진 왼쪽 방향으로 걸을 때의 애니메이션 이름
@@ -16,7 +16,34 @@ const whale = ScriptApp.loadSpritesheet(
     right: [0],
   },
   1
-); // 1초에 8장으로 한다.
+); // 1초에 1장으로 한다.
+
+const whale_3 = ScriptApp.loadSpritesheet(
+  'whale_3.png',
+  64,
+  64,
+  {
+    left: [0], // left 라는 이미 정해진 왼쪽 방향으로 걸을 때의 애니메이션 이름
+    up: [0], // 그 이름에 쓰일 전체 파일에서의 인덱스 넘버들
+    down: [0],
+    right: [0],
+  },
+  1
+); // 1초에 1장으로 한다.
+
+// 변수에 SpriteSheet를 읽어 저장
+const whale_4 = ScriptApp.loadSpritesheet(
+  'whale_sheet_4.png',
+  64,
+  64,
+  {
+    left: [4, 5, 6, 7], // left 라는 이미 정해진 왼쪽 방향으로 걸을 때의 애니메이션 이름
+    up: [4, 5, 6, 7], // 그 이름에 쓰일 전체 파일에서의 인덱스 넘버들
+    down: [0, 1, 2, 3],
+    right: [0, 1, 2, 3],
+  },
+  4
+); // 1초에 4장으로 한다.
 
 function openWidget(p: ScriptPlayer) {
   if (p.isMobile)
@@ -42,7 +69,11 @@ function openWidget(p: ScriptPlayer) {
       case 'submit':
         let choiceItem = msg.choice;
         if (choiceItem == 2) {
-          sender.sprite = whale;
+          sender.sprite = whale_2;
+        } else if (choiceItem == 3) {
+          sender.sprite = whale_3;
+        } else if (choiceItem == 4) {
+          sender.sprite = whale_4;
         } else if (choiceItem == 1) {
           sender.sprite = null;
         }
